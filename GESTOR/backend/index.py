@@ -65,9 +65,8 @@ def consultar_paciente():
             print("Edad: ",paciente["Edad"])
             print("Enfermedad:",paciente["Enfermedad"])
             print("Medicamentos:",paciente["Medicamentos"])
-
+            return #SALE SI YA ENCONTRO EL PACIENTE
         else:
-            
             print("!NO ESTA REGISTRADO¡")
 
 def eliminar_paciente():
