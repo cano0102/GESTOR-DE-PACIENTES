@@ -57,7 +57,19 @@ def registrar_medicos(nombre: str,edad: int,cedula: int,consultorio: int):
     print(medico)
 
 def consultar_paciente():
-    pass
+    nombre_paciente = str(input("DAME EL NOMBRE DEL PACIENTE A CONSULTAR:")).capitalize()
+    for paciente in pacientes:
+        if paciente["Nombre"] == nombre_paciente:
+            print("Busqueda exitosa👌")
+            print("Nombre: ",nombre_paciente)
+            print("Edad: ",paciente["Edad"])
+            print("Enfermedad:",paciente["Enfermedad"])
+            print("Medicamentos:",paciente["Medicamentos"])
+
+        else:
+            
+            print("!NO ESTA REGISTRADO¡")
+
 def eliminar_paciente():
     pass
 def editar_paciente():
