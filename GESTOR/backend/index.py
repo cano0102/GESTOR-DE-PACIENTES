@@ -7,8 +7,23 @@ class Paciente(TypedDict):
     enfermedad: str
     medicamentos: List[str]
 
+class Enfermero(TypedDict):
+    #CREANDO LISTA QUE TENDRA EL TIPADO DE LAS CLAVES
+    nombre: str
+    edad: int
+    cedula: int
+
+class Medico(TypedDict):
+    #CREANDO LISTA QUE TENDRA EL TIPADO DE LAS CLAVES
+    nombre: str
+    especialidad: str
+    cedula: int
+    consultorio: int
 
 pacientes: List[Paciente] = []
+enfermeros: List[Enfermero] = []
+medicos: List[Medico] = []
+
 def registro_de_pacientes(nombre: str, edad: int, enfermedad: str, medicamentos: List[str]) -> None:
     paciente = {
         "Nombre": nombre,
@@ -20,28 +35,26 @@ def registro_de_pacientes(nombre: str, edad: int, enfermedad: str, medicamentos:
     print("✅ Paciente registrado correctamente.")
     print(paciente)
 
-class enfermero(TypedDict):
-    #CREANDO LISTA QUE TENDRA EL TIPADO DE LAS CLAVES
-    nombre: str
-    edad: int
-    cedula: int
-    
-
-
-enfermeros: List[enfermero] = []
-
 def registrar_enfermeras(nombre: str, edad: int, cedula: int):
         enfermero = {
         "Nombre": nombre,
         "Edad": edad,
-        "cadula" : cedula
+        "cedula" : cedula
     }
         enfermeros.append(enfermero)
         print("✅ Enfermeros registrado correctamente.")
         print(enfermero)
 
-def registrar_medicos():
-    pass
+def registrar_medicos(nombre: str,edad: int,cedula: int,consultorio: int):
+    medico = {
+        "Nombre": nombre,
+        "Edad": edad,
+        "Cedula": cedula,
+        "Consultorio": consultorio
+    }
+    medicos.append(medico)
+    print("✅ Medico registrado correctamente.")
+    print(medico)
 
 def consultar_paciente():
     pass
