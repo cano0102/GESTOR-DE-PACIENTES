@@ -78,32 +78,36 @@ def menu():
     print("7 Para asignar enfermeros y medicos a pacientes")
     print("8 Para salir")
 
-while True:
-    menu()
-    opcion = int(input("INGRESA UNA OPCION: "))
-    if opcion == 1:
-        nombre: str = input("INGRESA EL NOMBRE DEL PACIENTE: ").capitalize()
-        edad: int = int(input("INGRESA LA EDAD DEL PACIENTE: "))
-        enfermedad: str = input("INGRESA LA CONDICION DEL PACIENTE: ").capitalize()
-        medicamentos = input("INGRESA LOS MEDICAMENTOS DEL PACIENTE (SEPARADOS POR COMA): ").split(",") #SE CONVIERTE EN UNA LISTA PARA AGREGAR A LA FUNCION
-        registro_de_pacientes(nombre,edad,enfermedad,medicamentos)
-    elif opcion == 2:
-        nombre: str = input("INGRESA EL NOMBRE DEL ENFERMER@: ").capitalize()
-        edad: int = int(input("INGRESA LA EDAD  DEL ENFERMER@: "))
-        cedula: int = int(input("INGRESA LA CEDULA  DEL ENFERMER@: "))
-        registrar_enfermeras(nombre,edad,cedula)
-    elif opcion == 3:
-        registrar_medicos()
-    elif opcion == 4:
-        consultar_paciente()
-    elif opcion == 5:
-        eliminar_paciente()
-    elif opcion == 6:
-        editar_paciente()
-    elif opcion == 7:
-        asignación_de_médicos_y_enfermeras()
-    elif opcion == 8:
-        print("gracias por utilizar este programa.")
-        break
-    else:
-        print("esta opcion es invalida.")
+def app():
+    while True:
+        menu()
+        opcion = int(input("INGRESA UNA OPCION: "))
+        if opcion == 1:
+            nombre: str = input("INGRESA EL NOMBRE DEL PACIENTE: ").capitalize()
+            edad: int = int(input("INGRESA LA EDAD DEL PACIENTE: "))
+            enfermedad: str = input("INGRESA LA CONDICION DEL PACIENTE: ").capitalize()
+            medicamentos = input("INGRESA LOS MEDICAMENTOS DEL PACIENTE (SEPARADOS POR COMA): ").split(",") #SE CONVIERTE EN UNA LISTA PARA AGREGAR A LA FUNCION
+            registro_de_pacientes(nombre,edad,enfermedad,medicamentos)
+        elif opcion == 2:
+            nombre: str = input("INGRESA EL NOMBRE DEL ENFERMER@: ").capitalize()
+            edad: int = int(input("INGRESA LA EDAD  DEL ENFERMER@: "))
+            cedula: int = int(input("INGRESA LA CEDULA  DEL ENFERMER@: "))
+            registrar_enfermeras(nombre,edad,cedula)
+        elif opcion == 3:
+            registrar_medicos()
+        elif opcion == 4:
+            consultar_paciente()
+        elif opcion == 5:
+            eliminar_paciente()
+        elif opcion == 6:
+            editar_paciente()
+        elif opcion == 7:
+            asignación_de_médicos_y_enfermeras()
+        elif opcion == 8:
+            print("gracias por utilizar este programa.")
+            break
+        else:
+            print("esta opcion es invalida.")
+
+if __name__ == "__main__":
+    app() #CORRE LA APP PRINCIPAL
