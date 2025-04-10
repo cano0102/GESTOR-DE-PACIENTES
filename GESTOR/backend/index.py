@@ -70,7 +70,14 @@ def consultar_paciente():
             print("!NO ESTA REGISTRADO¡")
 
 def eliminar_paciente():
-    pass
+    nombre_paciente = str(input("DAME EL NOMBRE DEL PACIENTE A ELIMINAR:")).capitalize()
+    for paciente in pacientes:
+        if paciente["Nombre"] == nombre_paciente:
+            pacientes.remove(paciente)
+            print("✅ Paciente eliminado correctamente.")
+            return
+    print("❌ Paciente no encontrado.")
+
 def editar_paciente():
     pass
 
