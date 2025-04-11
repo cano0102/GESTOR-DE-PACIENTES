@@ -97,7 +97,7 @@ def editar_paciente():
             elif opcion_a_editar == "Edad":
 
                 del paciente["Edad"]
-                edad_nueva = str(input("Dame la edad nueva:")).capitalize()
+                edad_nueva = int(input("Dame la edad nueva:"))
                 paciente["Edad"] = edad_nueva
                 print(paciente)
 
