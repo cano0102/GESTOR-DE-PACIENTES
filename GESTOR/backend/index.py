@@ -79,7 +79,47 @@ def eliminar_paciente():
     print("❌ Paciente no encontrado.")
 
 def editar_paciente():
-    pass
+    nombre_paciente = str(input("Dame el nombre del paciente a editar: ")).capitalize()
+
+    for paciente in pacientes:
+
+        if paciente["Nombre"] == nombre_paciente:
+
+            opcion_a_editar = str(input("Dame una opcion para editar escribe alguna de estas:nombre , edad ,enfermedad , medicamentos")).capitalize()
+
+            if "Nombre" == opcion_a_editar :
+
+                del paciente["Nombre"]
+                nombre_nuevo = str(input("Dame el nombre nuevo: ")).capitalize()
+                paciente["Nombre"] = nombre_nuevo
+                print(paciente)
+
+            elif opcion_a_editar == "Edad":
+
+                del paciente["Edad"]
+                edad_nueva = str(input("Dame la edad nueva:")).capitalize()
+                paciente["Edad"] = edad_nueva
+                print(paciente)
+
+            elif opcion_a_editar == "Enfermedad":
+
+                del paciente["Enfermedad"]
+                enfermedad_nuevo = str(input("Dame la enfermedad nueva: ")).capitalize()
+                paciente["Enfermedad"] = enfermedad_nuevo
+                print(paciente)
+
+            elif opcion_a_editar == "Medicamentos":
+
+                del paciente["Medicamentos"]
+                medicamentos_nuevo = str(input("Dame los medicamentos nuevos (SEPARADOS POR COMA) : ")).split(",") 
+                paciente["Medicamentos"] = medicamentos_nuevo
+                print(paciente)
+            else:
+                print("la opcion es invalidad")
+        else:
+            print("no esta el paciente")
+
+
 
 def asignación_de_médicos_y_enfermeras():
     pass
