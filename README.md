@@ -38,4 +38,5 @@
 El programa debe incluir:  
 - Un manual de usuario.  
 - Una guía de instalación.  
-- Todas las dependencias o bibliotecas requeridas para su funcionamiento.  
+- Todas las dependencias o bibliotecas requeridas para su funcionamiento. 
+ 

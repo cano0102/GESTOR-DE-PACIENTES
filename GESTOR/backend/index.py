@@ -1,3 +1,4 @@
+import random
 from typing import TypedDict, List #AGREGANDO TIPADO DE VARIABLES
 
 class Paciente(TypedDict):
@@ -35,22 +36,24 @@ def registro_de_pacientes(nombre: str, edad: int, enfermedad: str, medicamentos:
     print("✅ Paciente registrado correctamente.")
     print(paciente)
 
-def registrar_enfermeras(nombre: str, edad: int, cedula: int):
+def registrar_enfermeras(nombre: str, edad: int, cedula: int,estado: bool):
         enfermero = {
         "Nombre": nombre,
         "Edad": edad,
-        "cedula" : cedula
+        "cedula" : cedula,
+        "Estado" : estado
     }
         enfermeros.append(enfermero)
         print("✅ Enfermeros registrado correctamente.")
         print(enfermero)
 
-def registrar_medicos(nombre: str,edad: int,cedula: int,consultorio: int):
+def registrar_medicos(nombre: str,edad: int,cedula: int,consultorio: int,estado:bool):
     medico = {
         "Nombre": nombre,
         "Edad": edad,
         "Cedula": cedula,
-        "Consultorio": consultorio
+        "Consultorio": consultorio,
+        "Estado" : estado
     }
     medicos.append(medico)
     print("✅ Medico registrado correctamente.")
@@ -122,7 +125,35 @@ def editar_paciente():
 
 
 def asignación_de_médicos_y_enfermeras():
-    pass
+    nombre_de_paciente = str(input("DAME EL NOMBRE DEL PACIENTE: ")).capitalize() 
+    
+    
+
+    for paciente in pacientes:
+        if nombre_de_paciente == paciente["Nombre"]:
+            nombre_de_medico = str(input("DAME EL NOMBRE DEL MEDICO A ASIGNAR: ")).capitalize()
+            for medicoo in medicos:
+                if medicoo["Nombre"] == nombre_de_medico:
+                    if medicoo["Estado"] == True:
+
+                        nombre_de_enfermera = str(input("DAME EL NOMBRE DEL ENFERMERA A ASIGNAR: ")).capitalize()
+                        for enfermeras in enfermeros:
+                            if enfermeras["Nombre"] == nombre_de_enfermera:
+                                if enfermeras["Estado"] == True:
+                                    paciente["Médico asignado"] = nombre_de_medico
+                                    paciente["Enfermero asignado"] = nombre_de_enfermera
+                                    print(paciente)
+                                else:
+                                    print("el la emfermera ya esta asignada")
+                            else:
+                                print("la emfermera o enfermero no esta")
+                    else:
+                        print("el medico no esta")
+                else:
+                    print("el medico no esta")
+        else:
+            print("el paciente no esta")
+
 
 def menu():
     print("---OPCIONES A ELEGIR---")
@@ -150,9 +181,13 @@ def app():
             nombre: str = input("INGRESA EL NOMBRE DEL ENFERMER@: ").capitalize()
             edad: int = int(input("INGRESA LA EDAD  DEL ENFERMER@: "))
             cedula: int = int(input("INGRESA LA CEDULA  DEL ENFERMER@: "))
-            registrar_enfermeras(nombre,edad,cedula)
+            registrar_enfermeras(nombre,edad,cedula,estado=True)
         elif opcion == 3:
-            registrar_medicos()
+            nombre: str = input("INGRESA EL NOMBRE DEL MEDIC@: ").capitalize()
+            edad: int = int(input("INGRESA LA EDAD  DEL MEDIC@: "))
+            cedula: int = int(input("INGRESA LA CEDULA  DEL MEDIC@: "))
+            consultorio :int = int(input("DAME EL NUMERO DE CONSULTORIO: "))
+            registrar_medicos(nombre,edad,cedula,consultorio,estado = True)
         elif opcion == 4:
             consultar_paciente()
         elif opcion == 5:
@@ -169,3 +204,4 @@ def app():
 
 if __name__ == "__main__":
     app() #CORRE LA APP PRINCIPAL
+
