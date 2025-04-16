@@ -1,6 +1,4 @@
-import random
 from typing import TypedDict, List #AGREGANDO TIPADO DE VARIABLES
-
 class Paciente(TypedDict):
     #CREANDO LISTA QUE TENDRA EL TIPADO DE LAS CLAVES
     nombre: str
@@ -59,8 +57,7 @@ def registrar_medicos(nombre: str,edad: int,cedula: int,consultorio: int,estado:
     print("✅ Medico registrado correctamente.")
     print(medico)
 
-def consultar_paciente():
-    nombre_paciente = str(input("DAME EL NOMBRE DEL PACIENTE A CONSULTAR:")).capitalize()
+def consultar_paciente(nombre_paciente):
     for paciente in pacientes:
         if paciente["Nombre"] == nombre_paciente:
             print("Busqueda exitosa👌")
@@ -72,8 +69,7 @@ def consultar_paciente():
         else:
             print("!NO ESTA REGISTRADO¡")
 
-def eliminar_paciente():
-    nombre_paciente = str(input("DAME EL NOMBRE DEL PACIENTE A ELIMINAR:")).capitalize()
+def eliminar_paciente(nombre_paciente):
     for paciente in pacientes:
         if paciente["Nombre"] == nombre_paciente:
             pacientes.remove(paciente)
@@ -81,38 +77,26 @@ def eliminar_paciente():
             return
     print("❌ Paciente no encontrado.")
 
-def editar_paciente():
-    nombre_paciente = str(input("Dame el nombre del paciente a editar: ")).capitalize()
-
+def editar_paciente(nombre_paciente: str):
     for paciente in pacientes:
-
         if paciente["Nombre"] == nombre_paciente:
-
             opcion_a_editar = str(input("Dame una opcion para editar escribe alguna de estas:nombre , edad ,enfermedad , medicamentos")).capitalize()
-
             if "Nombre" == opcion_a_editar :
-
                 del paciente["Nombre"]
                 nombre_nuevo = str(input("Dame el nombre nuevo: ")).capitalize()
                 paciente["Nombre"] = nombre_nuevo
                 print(paciente)
-
             elif opcion_a_editar == "Edad":
-
                 del paciente["Edad"]
                 edad_nueva = int(input("Dame la edad nueva:"))
                 paciente["Edad"] = edad_nueva
                 print(paciente)
-
             elif opcion_a_editar == "Enfermedad":
-
                 del paciente["Enfermedad"]
                 enfermedad_nuevo = str(input("Dame la enfermedad nueva: ")).capitalize()
                 paciente["Enfermedad"] = enfermedad_nuevo
                 print(paciente)
-
             elif opcion_a_editar == "Medicamentos":
-
                 del paciente["Medicamentos"]
                 medicamentos_nuevo = str(input("Dame los medicamentos nuevos (SEPARADOS POR COMA) : ")).split(",") 
                 paciente["Medicamentos"] = medicamentos_nuevo
@@ -122,20 +106,13 @@ def editar_paciente():
         else:
             print("no esta el paciente")
 
-
-
-def asignación_de_médicos_y_enfermeras():
-    nombre_de_paciente = str(input("DAME EL NOMBRE DEL PACIENTE: ")).capitalize() 
-    
-    
-
+def asignación_de_médicos_y_enfermeras(nombre_de_paciente: str):
     for paciente in pacientes:
         if nombre_de_paciente == paciente["Nombre"]:
             nombre_de_medico = str(input("DAME EL NOMBRE DEL MEDICO A ASIGNAR: ")).capitalize()
             for medicoo in medicos:
                 if medicoo["Nombre"] == nombre_de_medico:
                     if medicoo["Estado"] == True:
-
                         nombre_de_enfermera = str(input("DAME EL NOMBRE DEL ENFERMERA A ASIGNAR: ")).capitalize()
                         for enfermeras in enfermeros:
                             if enfermeras["Nombre"] == nombre_de_enfermera:
@@ -154,7 +131,6 @@ def asignación_de_médicos_y_enfermeras():
         else:
             print("el paciente no esta")
 
-
 def menu():
     print("---OPCIONES A ELEGIR---")
     print("-"*30)
@@ -162,10 +138,10 @@ def menu():
     print("2. Para registrar enfermeras")
     print("3. Para registrar medicos")
     print("4. Para consultar un paciente")
-    print("5 Para eliminar un paciente")
-    print("6 Para editar la informacion de un paciente")
-    print("7 Para asignar enfermeros y medicos a pacientes")
-    print("8 Para salir")
+    print("5. Para eliminar un paciente")
+    print("6. Para editar la informacion de un paciente")
+    print("7. Para asignar enfermeros y medicos a pacientes")
+    print("8. Para salir")
 
 def app():
     while True:
@@ -189,13 +165,17 @@ def app():
             consultorio :int = int(input("DAME EL NUMERO DE CONSULTORIO: "))
             registrar_medicos(nombre,edad,cedula,consultorio,estado = True)
         elif opcion == 4:
-            consultar_paciente()
+            nombre_paciente = str(input("DAME EL NOMBRE DEL PACIENTE A CONSULTAR:")).capitalize()
+            consultar_paciente(nombre_paciente)
         elif opcion == 5:
-            eliminar_paciente()
+            nombre_paciente = str(input("DAME EL NOMBRE DEL PACIENTE A ELIMINAR:")).capitalize()
+            eliminar_paciente(nombre_paciente)
         elif opcion == 6:
-            editar_paciente()
+            nombre_paciente = str(input("Dame el nombre del paciente a editar: ")).capitalize()
+            editar_paciente(nombre_paciente)
         elif opcion == 7:
-            asignación_de_médicos_y_enfermeras()
+            nombre: str = input("INGRESA EL NOMBRE DEL PACIENTE: ").capitalize()
+            asignación_de_médicos_y_enfermeras(nombre)
         elif opcion == 8:
             print("gracias por utilizar este programa.")
             break
