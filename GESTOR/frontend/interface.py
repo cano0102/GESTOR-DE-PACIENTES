@@ -109,7 +109,7 @@ def asignar_medico_enfermero():
                             return
             messagebox.showerror("Error", "Médico o enfermero no disponibles.")
             return
-    messagebox.showerror("Error", "❌ Paciente no encontrado.")
+    messagebox.showerror("Error", "❌ no encontrado.")
 
 def limpiar_campos():
     nombre_entry.delete(0, tk.END)
